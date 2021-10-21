@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\Front\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +37,9 @@ Route::prefix('admin')->group(function() {
         Route::post('/login', [AdminUserController::class , 'store']);
 
 });
+
+/*
+ * Front Routes
+ */
+
+Route::get('/', [HomeController::class , 'index']);
