@@ -28,14 +28,14 @@
                 </div>
                 <div class="card-footer">
                     <strong>${{ $product->price }}</strong> &nbsp;
-                    <form action="{{ route('cart') }}" method="post">
+                    {{-- <form action="{{ route('cart') }}" method="post">
                         @csrf
                         <input type="hidden" name="id" value="{{ $product->id }}">
                         <input type="hidden" name="name" value="{{ $product->name }}">
                         <input type="hidden" name="price" value="{{ $product->price }}">
                     <button type="submit" class="btn btn-primary btn-outline-dark"><i class="fa fa-cart-plus "></i> Add To
                         Cart</button>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>
