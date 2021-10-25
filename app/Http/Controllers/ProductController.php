@@ -45,7 +45,7 @@ class ProductController extends Controller
         ]);
 
         // Sessions Message
-        $request->session()->flash('msg','Your product has been added!');
+        $request->session()->flash('msg','Your product has been added');
 
         // Redirect
 
@@ -93,7 +93,7 @@ class ProductController extends Controller
         ]);
 
         // Store a message in session
-        $request->session()->flash('msg', 'The product has been updated!');
+        $request->session()->flash('msg', 'Product has been updated');
 
         // Redirect
         return redirect('admin/products');
@@ -110,7 +110,7 @@ class ProductController extends Controller
         Product::destroy($id);
 
         // Store a message
-        session()->flash('msg','The product has been deleted!');
+        session()->flash('msg','Product has been deleted');
 
         // Redirect back
         return redirect('admin/products');
