@@ -9,8 +9,10 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\RegistrationController;
 use App\Http\Controllers\Front\SessionsController;
 use App\Http\Controllers\Front\UserProfileController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\SaveLaterController;
+use App\Http\Controllers\Front\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,3 +76,11 @@ Route::post('/cart/saveLater/{product}', [CartController::class , 'saveLater'])-
 // Save for later
 Route::delete('/saveLater/destroy/{product}', [SaveLaterController::class , 'destroy'])->name('saveLater.destroy');
 Route::post('/cart/moveToCart/{product}', [SaveLaterController::class , 'moveToCart'])->name('moveToCart');
+
+// Checkout
+Route::get('/checkout', [CheckoutController::class , 'index']);
+Route::post('/checkout',[CheckoutController::class , 'store'])->name('checkout');
+
+Route::get('empty', function() {
+        Cart::instance('default')->destroy();
+});
