@@ -9,6 +9,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\RegistrationController;
 use App\Http\Controllers\Front\SessionsController;
 use App\Http\Controllers\Front\UserProfileController;
+use App\Http\Controllers\Front\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,3 +62,10 @@ Route::get('/user/logout', [SessionsController::class , 'logout']);
 
 Route::get('/user/profile', [UserProfileController::class , 'index']);
 Route::get('/user/order/{id}', [UserProfileController::class , 'show']);
+
+// Cart
+Route::get('/cart', [CartController::class , 'index']);
+Route::post('/cart', [CartController::class , 'store'])->name('cart');
+Route::patch('/cart/update/{product}', [CartController::class , 'update'])->name('cart.update');
+Route::delete('/cart/remove/{product}', [CartController::class , 'destroy'])->name('cart.destroy');
+// Route::post('/cart/saveLater/{product}', [CartController::class , 'saveLater'])->name('cart.saveLater');
