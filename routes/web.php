@@ -10,6 +10,7 @@ use App\Http\Controllers\Front\RegistrationController;
 use App\Http\Controllers\Front\SessionsController;
 use App\Http\Controllers\Front\UserProfileController;
 use App\Http\Controllers\Front\CartController;
+use App\Http\Controllers\Front\SaveLaterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,4 +69,8 @@ Route::get('/cart', [CartController::class , 'index']);
 Route::post('/cart', [CartController::class , 'store'])->name('cart');
 Route::patch('/cart/update/{product}', [CartController::class , 'update'])->name('cart.update');
 Route::delete('/cart/remove/{product}', [CartController::class , 'destroy'])->name('cart.destroy');
-// Route::post('/cart/saveLater/{product}', [CartController::class , 'saveLater'])->name('cart.saveLater');
+Route::post('/cart/saveLater/{product}', [CartController::class , 'saveLater'])->name('cart.saveLater');
+
+// Save for later
+Route::delete('/saveLater/destroy/{product}', [SaveLaterController::class , 'destroy'])->name('saveLater.destroy');
+Route::post('/cart/moveToCart/{product}', [SaveLaterController::class , 'moveToCart'])->name('moveToCart');

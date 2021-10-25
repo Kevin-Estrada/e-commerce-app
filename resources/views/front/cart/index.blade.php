@@ -7,7 +7,7 @@
 
     @if ( Cart::instance('default')->count() > 0 )
 
-        <h4 class="mt-5">{{ Cart::instance('default')->count() }} items(s) in Shopping Cart</h4>
+        <h4 class="mt-5">{{ Cart::instance('default')->count() }} item(s) in Shopping Cart</h4>
 
         <div class="cart-items">
 
@@ -47,13 +47,13 @@
                                         <button type="submit" class="btn btn-link btn-link-dark">Remove</button>
                                     </form>
 
-                                    {{-- <form action="{{ route('cart.saveLater', $item->rowId) }}" method="post">
+                                    <form action="{{ route('cart.saveLater', $item->rowId) }}" method="post">
 
                                         @csrf
 
                                         <button type="submit" class="btn btn-link btn-link-dark">Save for later</button>
 
-                                    </form> --}}
+                                    </form>
 
                                 </td>
 
@@ -66,7 +66,7 @@
                                     </select>
                                 </td>
 
-                                <td>${{ $item->total() }}</td>
+                                <td>${{ $item->subtotal() }}</td>
                             </tr>
                         @endforeach
 
@@ -117,7 +117,7 @@
 
                     <div class="col-md-12">
 
-                        <h4>{{ Cart::instance('saveForLater')->count() }} items Save for Later</h4>
+                        <h4>{{ Cart::instance('saveForLater')->count() }} item(s) saved for later</h4>
                         <table class="table">
 
                             <tbody>
@@ -157,7 +157,7 @@
                                         </select>
                                     </td>
 
-                                    <td>${{ $item->total() }}</td>
+                                    <td>${{ $item->subtotal() }}</td>
                                 </tr>
 
                             @endforeach
