@@ -4,18 +4,13 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-use Exception;
-use Request;
-use Illuminate\Auth\AuthenticationException;
-use Response;
-use Illuminate\Support\Arr;
 
 class Handler extends ExceptionHandler
 {
     /**
      * A list of the exception types that are not reported.
      *
-     * @var array
+     * @var string[]
      */
     protected $dontReport = [
         //
@@ -24,7 +19,7 @@ class Handler extends ExceptionHandler
     /**
      * A list of the inputs that are never flashed for validation exceptions.
      *
-     * @var array
+     * @var string[]
      */
     protected $dontFlash = [
         'current_password',
@@ -43,23 +38,4 @@ class Handler extends ExceptionHandler
             //
         });
     }
-
-    public function unauthenticated($request, AuthenticationException $exception)
-    {
-
-        $guard = Arr::get($exception->guards(), 0);
-
-        switch ($guard) {
-            case 'admin':
-                return redirect('/admin/login');
-            break;
-
-            default:
-                return redirect('/user/login');
-                break;
-
-        }
-
-    }
-    
 }
